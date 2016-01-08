@@ -1,3 +1,8 @@
 class SurveysUser < ActiveRecord::Base
-  # Remember to create a migration!
+  belongs_to :user
+  belongs_to :survey
+  has_many :responses
+
+  validates :survey_id, :user_id, presence: true
+
 end
