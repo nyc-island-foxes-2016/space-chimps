@@ -11,7 +11,6 @@ class User < ActiveRecord::Base
                         uniqueness: { case_sensitive: false },
                         length: { in: 4..20 }
 
-
   def password
     @password ||= Password.new(password_hash)
   end
