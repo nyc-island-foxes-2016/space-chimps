@@ -1,6 +1,6 @@
 class CreateOptions < ActiveRecord::Migration
   def change
-    create_table do |t|
+    create_table :options do |t|
       t.string :content, null: false
       t.integer :question_id, null: false, index: true
 
