@@ -6,9 +6,14 @@
 <h3>Question 1: <%= @survey_user.survey.questions.first.content %></h3>
 
 <ul>
-  <li>
-    <% @survey_user.survey.questions.first.options.each do |option| %>
-    <%= option.content%>
+  <form method="post" action="/responses">
+    <% @next_question.options.each do |option| %>
+      <li>
+        <label><%= option.content%></label>
+        <input type="radio" name="option" value="<%= option.id%>">
+      </li>
     <%end%>
-  </li>
+    <input type="hidden" name="surveys_user" value="<%= @survey_user.id %>">
+    <input type="submit" value="Submit answer">
+  </form>
 </ul>
