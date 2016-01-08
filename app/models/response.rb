@@ -1,3 +1,9 @@
 class Response < ActiveRecord::Base
-  # Remember to create a migration!
+  belongs_to :question
+  belongs_to :option
+  belongs_to :surveys_user
+
+  validates :option_id, :surveys_user_id, :question_id, presence: true
+
+
 end
