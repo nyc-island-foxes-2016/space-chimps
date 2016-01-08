@@ -1,0 +1,13 @@
+<h2>New Thing</h2>
+
+<form method="POST" action="/things" >
+
+  <label for="thing-name">Name:</label>
+  <input id="thing-name" type="text" name="thing[name]" required />
+
+  <label for="thing-description">Description:</label>
+  <textarea id="thing-description" name="thing[description]" required></textarea>
+
+  <input type="submit" value="Save Thing" />
+
+</form>
