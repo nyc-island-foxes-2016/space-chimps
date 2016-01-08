@@ -1,0 +1,12 @@
+/****************************************************\
+
+APPLICATION-SPECIFIC STYLING should be included in this
+stylesheet. Link this sheet *after* the jeffstrap.css
+sheet, to help ensure that any conflicts between that
+stylesheet and this one are resolved in favor of this one.
+Also, use classes as selectors in this stylesheet, so that
+CSS's specificity rules will give these styles priority
+over those in jeffstrap.css, which use tags as selectors
+(almost) exclusively.
+
+\****************************************************/
