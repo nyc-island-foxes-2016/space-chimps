@@ -1,3 +1,3 @@
 get '/' do
-  redirect :"/things"
+  redirect :"/sessions/new"
 end

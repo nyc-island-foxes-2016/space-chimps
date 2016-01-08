@@ -1,0 +1,14 @@
+
+<h1>Survey: <%= @survey_user.survey.name %></h1>
+
+<!-- < binding.pry > -->
+
+<h3>Question 1: <%= @survey_user.survey.questions.first.content %></h3>
+
+<ul>
+  <li>
+    <% @survey_user.survey.questions.first.options.each do |option| %>
+    <%= option.content%>
+    <%end%>
+  </li>
+</ul>
