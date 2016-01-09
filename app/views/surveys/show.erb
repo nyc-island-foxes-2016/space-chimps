@@ -1,8 +1,20 @@
 <h2><%= @survey.name %></h2>
 
 <p><%= @survey.description %>.</p>
-<p>This survey as created by <%= @user.username %></p>
+<p>This survey was created by <%= @user.username %></p>
 
+<h3>Questions</h3>
+
+<ol>
+  <% @survey.questions.each do |question| %>
+    <li>
+      <p><%= question.content %></p>
+      <% question.options.each do |option| %>
+        <p><%= option.content %></p>
+      <% end %>
+    </li>
+  <% end %>
+</ol>
 
 <% if @survey.user == current_user %>
   <p>
@@ -15,9 +27,3 @@
   </form>
 <% end %>
 
-
-
-<form method="GET" action="/responses/new">
-  <input type="hidden" name="survey_id" value="<%= @survey.id %>">
-  <input type="submit" value="Take this survey">
-</form>
