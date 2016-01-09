@@ -16,7 +16,6 @@ end
 
 post '/responses' do
   response = Response.create(option_id: params[:option], surveys_user_id: params[:surveys_user], question_id: params[:question_id])
-  binding.pry
 
   redirect "/responses/new"
 end
