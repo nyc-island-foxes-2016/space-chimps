@@ -9,7 +9,6 @@ get '/surveys' do
         @other_surveys << survey
       end
     end
-  binding.pry
   erb :'/surveys/index'
 end
 

@@ -4,6 +4,8 @@
   <p class="error"><%= @error %></p>
 <% end %>
 
+<a href="/surveys/<%= @survey.id %>">Back to Survey</a>
+
 <ol>
 <% @survey.questions.each do |question| %>
   <li>
@@ -34,4 +36,5 @@
   <label for="option[content_string]">Options:</label>
   <input type="text" name="options[content_string]" placeholder="Enter options separated by commas" required>
 <input type="submit" value="Save Question" >
+
 
