@@ -20,4 +20,14 @@ class Survey < ActiveRecord::Base
 
   validates   :user_id, presence: true
 
+  # def de_sinatrafying_array(survey)
+
+  def next_question
+    question_bank = []
+    self.questions.each do |question|
+      question_bank << question
+    end
+    question_bank.shift
+  end
+
 end
