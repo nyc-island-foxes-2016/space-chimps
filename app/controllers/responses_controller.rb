@@ -1,4 +1,3 @@
-
 get '/responses/new' do
 
   @survey = Survey.find_by(id: params[:survey_id])
@@ -6,8 +5,6 @@ get '/responses/new' do
   # binding.pry
   next_question_id_answer = @survey.next_question_id
   @question = Question.find_by(id: next_question_id_answer)
-
-
   erb :'responses/new'
 end
 
@@ -20,5 +17,4 @@ post '/responses' do
 
   redirect "/responses/new"
 end
-
 
