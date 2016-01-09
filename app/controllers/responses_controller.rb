@@ -1,24 +1,21 @@
-
 get '/responses/new' do
-  survey = Survey.find(1)
-  user = User.find(2)
-  @survey_user = SurveysUser.new(user_id: user.id, survey_id: survey.id)
 
-  if @survey_user.save
-    next_question_id = survey.next_question_id
-    @next_question = Question.find(next_question_id)
-    erb :'responses/new'
-  else
-    @errors = @survey_user.errors.full_messages
-    erb :'responses/new'
-  end
+  @survey = Survey.find_by(id: params[:survey_id])
+  @surveys_user = SurveysUser.find_or_create_by(user_id: session[:user_id], survey_id: params[:survey_id])
+  # binding.pry
+  next_question_id_answer = @survey.next_question_id
+  @question = Question.find_by(id: next_question_id_answer)
+
+  erb :'responses/new'
 end
 
 post '/responses' do
   response = Response.create(option_id: params[:option], surveys_user_id: params[:surveys_user], question_id: params[:question_id])
-  binding.pry
+  # surveys_user = SurveysUser.find_by(id: params[:surveys_user])
+  # survey = Survey.find_by(id: surveys_user.survey_id)
+
+  # # next_question_id = survey.next_question_id
 
   redirect "/responses/new"
 end
-
 

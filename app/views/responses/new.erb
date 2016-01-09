@@ -1,5 +1,5 @@
 
-<h1>Survey: <%= @survey_user.survey.name %></h1>
+<h1>Survey: <%= @surveys_user.survey.name %></h1>
 
 <ul>
   <%if @errors%>
@@ -9,18 +9,18 @@
   <%end%>
 </ul>
 
-<h3>Question 1: <%= @survey_user.survey.questions.first.content %></h3>
+<h3>Question 1: <%= @surveys_user.survey.questions.first.content %></h3>
 
 <ul>
   <form method="post" action="/responses">
-    <% @next_question.options.each do |option| %>
+    <% @question.options.each do |option| %>
       <li>
         <label><%= option.content%></label>
         <input type="radio" name="option" value="<%= option.id%>">
       </li>
     <%end%>
-    <input type="hidden" name="surveys_user" value="<%= @survey_user.id %>">
-    <input type="hidden" name="question_id" value="<%= @next_question.id %>">
+    <input type="hidden" name="surveys_user" value="<%= @surveys_user.id %>">
+    <input type="hidden" name="question_id" value="<%= @question.id %>">
     <input type="submit" value="Submit answer">
   </form>
 </ul>
