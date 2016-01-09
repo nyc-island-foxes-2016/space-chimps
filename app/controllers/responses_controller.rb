@@ -3,7 +3,7 @@ get '/responses/new' do
 
   @survey = Survey.find_by(id: params[:survey_id])
   @surveys_user = SurveysUser.find_or_create_by(user_id: session[:user_id], survey_id: params[:survey_id])
-  binding.pry
+  # binding.pry
   next_question_id_answer = @survey.next_question_id
   @question = Question.find_by(id: next_question_id_answer)
 

@@ -3,6 +3,20 @@
 <p><%= @survey.description %>.</p>
 <p>This survey as created by <%= @user.username %></p>
 
+<h3>Questions</h3>
+
+<ol>
+<% @survey.questions.each do |question| %>
+  <li>
+    <p><%= question.content %></p>
+    <ul>
+      <% question.options.each do |option| %>
+        <li><%= option.content %></li>
+      <% end %>
+    </ul>
+  </li>
+<% end %>
+</ol>
 
 <% if @survey.user == current_user %>
   <p>

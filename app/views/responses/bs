@@ -23,3 +23,21 @@
     <input type="submit" value="Submit answer">
   </form>
 </ul>
+
+
+from surveys/show
+
+<h3>Questions</h3>
+
+  <ol>
+  <% @survey.questions.each do |question| %>
+    <li>
+      <p><%= question.content %></p>
+    </li>
+  <% end %>
+  </ol>
+    <ul>
+      <% question.options.each do |option| %>
+        <li><%= option.content %></li>
+      <% end %>
+    </ul>
