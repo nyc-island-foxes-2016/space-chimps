@@ -1,0 +1,18 @@
+<h2>Surveys</h2>
+
+<ul>
+  <% @surveys.each do |survey| %>
+    <li>
+      <p>
+        <a href="/surveys/<%= "#{survey.id}" %>" ><%= survey.name %></a>
+      </p>
+      <p class="attribution">
+        Used by <a href="/users/<%= "#{survey.user.id}" %>"><%= survey.user.username %></a> on <%= long_form_date(survey.created_at) %>
+      </p>
+    </li>
+  <% end %>
+</ul>
+
+<% if logged_in? %>
+  <a href="/surveys/new">Create a new survey</a>
+<% end %>

@@ -1,0 +1,37 @@
+<h2>Edit Survey</h2>
+
+<h3>Survey Heading</h3>
+
+<form method="POST" action="/surveys" >
+  <input type="hidden" name="_method" value="PUT"/>
+
+  <label for="survey-name">Name:</label>
+  <input id="survey-name" type="text" name="survey[name]" value="<%= @survey.name %>" required />
+
+  <label for="survey-description">Description:</label>
+  <textarea id="survey-description" name="survey[description]" required><%= @survey.description %></textarea>
+
+  <input type="submit" value="Save Survey" />
+</form>
+
+<h3>Questions</h3>
+
+<ul>
+<% @survey.questions.each do |question| %>
+  <li>
+    <p><%= question.content %></p>
+    <% question.options.each do |option| %>
+      <p><%= option.content %></p>
+    <% end %>
+  </li>
+<% end %>
+
+
+<h4>Next Question</h4>
+<form method="Post" action="/questions" >
+  <label for="question[content]" >Question:</label>
+  <textarea id="question-content" name="question[content]" placeholder="Enter question text" required></textarea>
+
+  <label for="option[content_string]">Options:</label>
+  <input type="text" name="option[content_string]" placeholder="Enter options separated by commas" required>
+<input type="submit" value="Save Question" >

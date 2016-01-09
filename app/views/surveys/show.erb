@@ -1,0 +1,15 @@
+<h2><%= @survey.name %></h2>
+
+<p><%= @survey.description %>.</p>
+<p>This survey as created by <%= @user.username %>.</p>
+
+<% if @survey.user == current_user %>
+  <p>
+    <a href="/surveys/<%= "#{@survey.id}" %>/edit">Edit this survey</a>
+  </p>
+
+  <form method="POST" action="/surveys/<%= @survey.id %>">
+    <input type=hidden name="_method" value="DELETE">
+    <input type="submit" value="Delete Survey">
+  </form>
+<% end %>
