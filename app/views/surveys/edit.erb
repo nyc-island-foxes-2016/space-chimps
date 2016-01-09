@@ -1,5 +1,7 @@
 <h2>Edit Survey</h2>
 
+<a href="/surveys/<%= @survey.id %>/edit">Back to Survey View</a>
+
 <h3>Survey Heading</h3>
 
 <form method="POST" action="/surveys/<%= @survey.id %>" >
@@ -16,17 +18,27 @@
 
 <h3>Questions</h3>
 
-<ul>
-<% @survey.questions.each do |question| %>
-  <li>
-    <p><%= question.content %></p>
-    <% question.options.each do |option| %>
-      <p><%= option.content %></p>
-    <% end %>
-  </li>
-<% end %>
+<ol>
+  <% @survey.questions.each do |question| %>
+    <li>
+      <p><%= question.content %></p>
+
+      <ul>
+        <% question.options.each do |option| %>
+          <li><%= option.content %></li>
+        <% end %>
+      </ul>
+
+      <!-- <form method="POST" action="/questions/<%= question.id %>">
+        <input type=hidden name="_method" value="DELETE">
+        <input type="submit" value="Delete Question">
+      </form> -->
+
+    </li>
+  <% end %>
+</ol>
 
 <form method="GET" action="/questions/new">
   <input type="hidden" name="survey_id" value="<%= @survey.id %>">
-  <input type="submit" value="Add Questions">
+  <input type="submit" value="Add or Delete Questions">
 </form>

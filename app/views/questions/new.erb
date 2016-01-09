@@ -4,7 +4,7 @@
   <p class="error"><%= @error %></p>
 <% end %>
 
-<a href="/surveys/<%= @survey.id %>">Back to Survey</a>
+<a href="/surveys/<%= @survey.id %>/edit">Back to Survey Edit View</a>
 
 <ol>
 <% @survey.questions.each do |question| %>
