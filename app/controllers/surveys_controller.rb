@@ -16,6 +16,7 @@ get '/surveys/new' do
   erb :"/surveys/new"
 end
 
+# TODO - Natalie and Will
 get '/surveys/:id' do
   @survey = Survey.find_by(id: params[:id])
   @user = @survey.user

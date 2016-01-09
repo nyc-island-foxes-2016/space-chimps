@@ -25,6 +25,15 @@ post '/questions' do
 
 end
 
+
+get '/questions/:id' do
+  @survey = Survey.find_by(id: params[:survey_id])
+  @surveys_user = SurveysUser.create(user_id: session[:user_id], survey_id: params[:survey_id])
+
+  @question = @survey.questions.first
+  erb :"/questions/show"
+end
+
 delete '/questions/:id' do
   question = Question.find(params[:id])
   survey = Survey.find(question.survey_id)

@@ -16,8 +16,12 @@ end
 
 post '/responses' do
   response = Response.create(option_id: params[:option], surveys_user_id: params[:surveys_user], question_id: params[:question_id])
+  surveys_user = SurveysUser.find_by(id: params[:surveys_user])
+  survey = Survey.find_by(id: surveys_user.survey_id)
 
-  redirect "/responses/new"
+  next_question_id = survey.next_question_id
+
+  redirect "/questions/#{next_question_id}"
 end
 
 

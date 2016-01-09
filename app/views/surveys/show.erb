@@ -20,7 +20,7 @@
 
 <% if @survey.user == current_user %>
   <p>
-    <a href="/surveys/<%= "#{@survey.id}" %>/edit">Edit survey info and add questions</a>
+    <a href="/surveys/<%= @survey.id %>/edit">Edit this survey</a>
   </p>
 
   <form method="POST" action="/surveys/<%= @survey.id %>">
@@ -28,3 +28,10 @@
     <input type="submit" value="Delete Survey">
   </form>
 <% end %>
+
+
+
+<form method="GET" action="/questions/<%= @survey.questions.first.id %>">
+  <input type="hidden" name="survey_id" value="<%= @survey.id %>">
+  <input type="submit" value="Take this survey">
+</form>
