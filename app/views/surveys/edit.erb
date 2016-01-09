@@ -2,7 +2,7 @@
 
 <h3>Survey Heading</h3>
 
-<form method="POST" action="/surveys" >
+<form method="POST" action="/surveys/<%= @survey.id %>" >
   <input type="hidden" name="_method" value="PUT"/>
 
   <label for="survey-name">Name:</label>
@@ -26,12 +26,7 @@
   </li>
 <% end %>
 
-
-<h4>Next Question</h4>
-<form method="Post" action="/questions" >
-  <label for="question[content]" >Question:</label>
-  <textarea id="question-content" name="question[content]" placeholder="Enter question text" required></textarea>
-
-  <label for="option[content_string]">Options:</label>
-  <input type="text" name="option[content_string]" placeholder="Enter options separated by commas" required>
-<input type="submit" value="Save Question" >
+<form method="GET" action="/questions/new">
+  <input type="hidden" name="survey_id" value="<%= @survey.id %>">
+  <input type="submit" value="Add Questions">
+</form>
