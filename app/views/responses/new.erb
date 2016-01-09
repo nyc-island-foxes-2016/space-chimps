@@ -1,7 +1,13 @@
 
 <h1>Survey: <%= @survey_user.survey.name %></h1>
 
-<!-- < binding.pry > -->
+<ul>
+  <%if @errors%>
+    <%@errors.each do |error| %>
+    <li><%=error%></li>
+    <%end%>
+  <%end%>
+</ul>
 
 <h3>Question 1: <%= @survey_user.survey.questions.first.content %></h3>
 
@@ -14,6 +20,7 @@
       </li>
     <%end%>
     <input type="hidden" name="surveys_user" value="<%= @survey_user.id %>">
+    <input type="hidden" name="question_id" value="<%= @next_question.id %>">
     <input type="submit" value="Submit answer">
   </form>
 </ul>

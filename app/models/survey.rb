@@ -22,12 +22,12 @@ class Survey < ActiveRecord::Base
 
   # def de_sinatrafying_array(survey)
 
-  def next_question
-    question_bank = []
-    self.questions.each do |question|
-      question_bank << question
+  def next_question_id
+    question_id_bank = []
+    self.questions.each_with_index do |question, i|
+      question_id_bank << (i + 1)
     end
-    question_bank.shift
+    question_id_bank.shift
   end
 
 end
