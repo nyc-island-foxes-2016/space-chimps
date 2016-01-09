@@ -31,7 +31,7 @@
 
 
 
-<form method="GET" action="/questions/<%= @survey.questions.first.id %>">
+<form method="GET" action="/responses/new">
   <input type="hidden" name="survey_id" value="<%= @survey.id %>">
   <input type="submit" value="Take this survey">
 </form>

@@ -1,0 +1,28 @@
+<h1>Survey: <%= @survey.name %></h1>
+
+<ul>
+  <%if @errors%>
+    <%@errors.each do |error| %>
+    <li><%=error%></li>
+    <%end%>
+  <%end%>
+</ul>
+
+<h3>Question: <%= @question.content %></h3>
+
+<ul>
+  <form method="post" action="/responses">
+    <% @question.options.each do |option| %>
+      <li>
+        <label><%= option.content%></label>
+        <input type="radio" name="option" value="<%= option.id%>">
+      </li>
+    <%end%>
+
+    <input type="hidden" name="surveys_user" value="<%= @surveys_user.id %>">
+    <input type="hidden" name="question_id" value="<%= @question.id %>">
+    <input type="hidden" name="survey_id" value="<%= @survey.id %>">
+
+    <input type="submit" value="Submit answer">
+  </form>
+</ul>
