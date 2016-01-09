@@ -32,7 +32,7 @@ end
 put '/surveys/:id' do
   @survey = Survey.find_by(id: params[:id])
   if @survey.update(params[:survey])
-    redirect "/surveys/#{@survey.id}"
+    redirect "/surveys/#{@survey.id}/edit"
   else
     @errors = @survey.errors.full_messages
     erb :"/surveys/edit"
