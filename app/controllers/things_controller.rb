@@ -16,7 +16,6 @@ end
 post "/things" do
   @thing = Thing.new(params[:thing])
   @thing.user = current_user
-  binding.pry
   if @thing.save
     redirect "/things/#{@thing.id}"
   else

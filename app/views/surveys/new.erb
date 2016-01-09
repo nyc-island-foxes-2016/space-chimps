@@ -1,0 +1,13 @@
+<h2>New Survey</h2>
+
+<form method="POST" action="/surveys" >
+
+  <label for="survey-name">Name:</label>
+  <input id="survey-name" type="text" name="survey[name]" required />
+
+  <label for="survey-description">Description:</label>
+  <textarea id="survey-description" name="survey[description]" required></textarea>
+
+  <input type="submit" value="Save Survey" />
+
+</form>
