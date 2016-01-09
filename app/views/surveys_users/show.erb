@@ -1,37 +1,17 @@
 <h2><%= @survey.name %></h2>
 
 <p><%= @survey.description %>.</p>
-<p>This survey as created by <%= @user.username %></p>
 
-<h3>Questions</h3>
+<p>This survey was created by <%= @survey.user.username %></p>
 
-<ol>
-<% @survey.questions.each do |question| %>
-  <li>
-    <p><%= question.content %></p>
-    <ul>
-      <% question.options.each do |option| %>
-        <li><%= option.content %></li>
-      <% end %>
-    </ul>
-  </li>
-<% end %>
-</ol>
 
-<% if @survey.user == current_user %>
-  <p>
-    <a href="/surveys/<%= @survey.id %>/edit">Edit this survey</a>
-  </p>
+<ul>
+  <form method="get" action="/responses/new">
 
-  <form method="POST" action="/surveys/<%= @survey.id %>">
-    <input type=hidden name="_method" value="DELETE">
-    <input type="submit" value="Delete Survey">
+    <input type="hidden" name="surveys_user" value="<%= @surveys_user.id %>">
+
+    <input type="hidden" name="survey_id" value="<%= @survey.id %>">
+
+    <input type="submit" value="Start Survey">
   </form>
-<% end %>
-
-
-
-<form method="GET" action="/responses/new">
-  <input type="hidden" name="survey_id" value="<%= @survey.id %>">
-  <input type="submit" value="Take this survey">
-</form>
+</ul>

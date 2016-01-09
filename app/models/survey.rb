@@ -2,6 +2,7 @@ class Survey < ActiveRecord::Base
   belongs_to :user
   has_many :surveys_users
   has_many :questions
+  has_many :responses, through: :questions
 
   validates   :name,  presence: true,
                       uniqueness: true,
