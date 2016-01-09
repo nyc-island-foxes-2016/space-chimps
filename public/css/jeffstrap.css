@@ -153,14 +153,19 @@ main {
   background-color: #ddd;
 }
 
-main ul {
-  margin: 0 auto 1.5rem;
+main li {
+  font-size: 1.25rem;
+}
+
+main ol li {
+  position: relative;
+  left: 1.5rem;
+  margin: 0;
 }
 
 main ul li {
-  list-style: none;
   margin: 0.5rem 0;
-  font-size: 1.25rem;
+  list-style: none;
 }
 
 main input {

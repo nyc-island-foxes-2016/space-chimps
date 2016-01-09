@@ -5,7 +5,7 @@
   <p class="error"><%= @error %></p>
 <% end %>
 
-<ul>
+<ol>
 <% @survey.questions.each do |question| %>
   <li>
     <p><%= question.content %></p>
@@ -16,6 +16,7 @@
     </ul>
   </li>
 <% end %>
+</ol>
 
 
 <h4>Next Question</h4>
