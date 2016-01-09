@@ -1,5 +1,4 @@
 get '/questions/new' do
-  binding.pry
   @survey = Survey.find_by(id: params[:survey_id])
   @error = params[:error]
 
@@ -24,4 +23,11 @@ post '/questions' do
     redirect "/questions/new?survey_id=#{@survey.id}?error=Question did not save."
   end
 
+end
+
+delete '/questions/:id' do
+  question = Question.find(params[:id])
+  survey = Survey.find(question.survey_id)
+  question.destroy
+  redirect "/questions/new?survey_id=#{survey.id}"
 end

@@ -1,4 +1,3 @@
-
 <h2>Add Questions to "<%= @survey.name %>"</h2>
 
 <% if @error %>
@@ -14,6 +13,12 @@
         <li><%= option.content %></li>
       <% end %>
     </ul>
+
+  <form method="POST" action="/questions/<%= question.id %>">
+    <input type=hidden name="_method" value="DELETE">
+    <input type="submit" value="Delete Question">
+  </form>
+
   </li>
 <% end %>
 </ol>
