@@ -1,7 +1,7 @@
 get '/' do
   if logged_in?
     @surveys = Survey.all
-    erb :'/surveys/index'
+    redirect :'/surveys'
   else
     redirect :"/sessions/new"
   end

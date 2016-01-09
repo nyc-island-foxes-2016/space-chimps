@@ -1,18 +1,33 @@
-<h2>Surveys</h2>
+<h2>Surveys You Can Take</h2>
 
 <ul>
-  <% @surveys.each do |survey| %>
+  <% @other_surveys.each do |survey| %>
     <li>
       <p>
         <a href="/surveys/<%= "#{survey.id}" %>" ><%= survey.name %></a>
       </p>
       <p class="attribution">
-        Used by <a href="/users/<%= "#{survey.user.id}" %>"><%= survey.user.username %></a> on <%= long_form_date(survey.created_at) %>
+        Created by <a href="/users/<%= "#{survey.user.id}" %>"><%= survey.user.username %></a> on <%= long_form_date(survey.created_at) %>
       </p>
     </li>
   <% end %>
 </ul>
 
 <% if logged_in? %>
+  <h2>Surveys You Created</h2>
+
+  <ul>
+    <% @user_surveys.each do |survey| %>
+      <li>
+        <p>
+          <a href="/surveys/<%= "#{survey.id}" %>" ><%= survey.name %></a>
+        </p>
+        <p class="attribution">
+          Created by you on <%= long_form_date(survey.created_at) %>
+        </p>
+      </li>
+    <% end %>
+  </ul>
+
   <a href="/surveys/new">Create a new survey</a>
 <% end %>

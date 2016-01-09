@@ -1,5 +1,15 @@
 get '/surveys' do
   @surveys = Survey.all
+  @user_surveys = []
+  @other_surveys = []
+  @surveys.each do |survey|
+      if survey.user == current_user
+        @user_surveys << survey
+      else
+        @other_surveys << survey
+      end
+    end
+  binding.pry
   erb :'/surveys/index'
 end
 
