@@ -1,0 +1,18 @@
+<h2>Survey Results for "<%= @survey.name %>"</h2>
+
+<ul>
+  <% @questions_results.each do |question| %>
+    <li>
+      <h3><%= question["content"] %></h3>
+      <% question["options"].each do |option| %>
+        <p>
+          <%= option.keys[0] %>: <%= option[option.keys[0]] %> out of <%= question["responses_count"] %>
+        </p>
+      <% end %>
+    </li>
+  <% end %>
+</ul>
+
+<p>
+  Return to <a href="/surveys">Survey Index</a>
+</p>
