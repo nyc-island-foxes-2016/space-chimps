@@ -1,4 +1,6 @@
 get '/surveys' do
+  # Next step: add method to survey model which sorts
+  # surveys already taken from surveys not yet taken
   @surveys = Survey.all
   @user_surveys = []
   @other_surveys = []
@@ -36,6 +38,11 @@ end
 get '/surveys/:id/edit' do
   @survey = Survey.find_by(id: params[:id])
   erb :"/surveys/edit"
+end
+
+get '/surveys/:id/results' do
+  @survey = Survey.find_by(id: params[:id])
+  "Show results for #{@survey.name}"
 end
 
 put '/surveys/:id' do

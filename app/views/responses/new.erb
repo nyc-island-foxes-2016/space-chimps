@@ -32,9 +32,9 @@
 <% else %>
   <p>Thanks for completing the survey, "<%= @survey.name %>.</p>
   <p>
-    See <a href="#">Survey Results</a>
+    See <a href="/surveys/<%= @survey.id %>/results">Survey Results</a>
   </p>
   <p>
-    Return to <a href="#">Survey Index</a>
+    Return to <a href="/surveys">Survey Index</a>
   </p>
 <% end %>
