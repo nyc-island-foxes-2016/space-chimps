@@ -6,28 +6,16 @@
 
 <a href="/surveys/<%= @survey.id %>/edit">Back to Survey Edit View</a>
 
-<ol>
-<% @survey.questions.each do |question| %>
-  <li>
-    <p><%= question.content %></p>
-    <ul>
-      <% question.options.each do |option| %>
-        <li><%= option.content %></li>
-      <% end %>
-    </ul>
-
-  <form method="POST" action="/questions/<%= question.id %>">
-    <input type=hidden name="_method" value="DELETE">
-    <input type="submit" value="Delete Question">
-  </form>
-
-  </li>
-<% end %>
+<ol id="questions-section">
+  <% @survey.questions.each do |question| %>
+    <li id="questions-list">
+      <%= erb :"/questions/_show", locals: {question: question} %>
+    </li>
+  <% end %>
 </ol>
 
-
 <h4>Next Question</h4>
-<form method="Post" action="/questions" >
+<form id="post-questions" method="Post" action="/questions" >
   <input type="hidden" name="question[survey_id]" value="<%= @survey.id %>">
 
   <label for="question[content]" >Question:</label>
@@ -36,5 +24,3 @@
   <label for="option[content_string]">Options:</label>
   <input type="text" name="options[content_string]" placeholder="Enter options separated by commas" required>
 <input type="submit" value="Save Question" >
-
-
