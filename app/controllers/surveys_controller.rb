@@ -1,14 +1,13 @@
 get '/surveys' do
-  @surveys = Survey.all
-  @user_surveys = []
-  @other_surveys = []
-  @surveys.each do |survey|
-      if survey.user == current_user
-        @user_surveys << survey
-      else
-        @other_surveys << survey
-      end
-    end
+  user_and_other_surveys = Survey.created_and_not_created_by(current_user,Survey.all)
+
+  @user_surveys = user_and_other_surveys[0]
+  other_surveys = user_and_other_surveys[1]
+
+  taken_and_not_taken_surveys = Survey.taken_and_not_taken_by(current_user, other_surveys)
+  @surveys_taken = taken_and_not_taken_surveys[0]
+  @surveys_not_taken = taken_and_not_taken_surveys[1]
+
   erb :'/surveys/index'
 end
 
@@ -36,6 +35,11 @@ end
 get '/surveys/:id/edit' do
   @survey = Survey.find_by(id: params[:id])
   erb :"/surveys/edit"
+end
+
+get '/surveys/:id/results' do
+  @survey = Survey.find_by(id: params[:id])
+  "Show results for #{@survey.name}"
 end
 
 put '/surveys/:id' do
