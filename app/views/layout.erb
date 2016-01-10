@@ -20,7 +20,7 @@
     <ul>
       <% if logged_in? %>
         <li>
-          Welcome, <a href="/users/<%= current_user.id %>"><%= current_user.username %></a>!
+          Welcome, <a href="/surveys"><%= current_user.username %></a>!
         </li>
         <li>
           <form method="POST" action="/sessions" />

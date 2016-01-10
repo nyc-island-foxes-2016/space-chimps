@@ -61,5 +61,5 @@ end
 
 delete "/surveys/:id" do
   Survey.find_by(id: params[:id]).destroy
-  redirect "/users/#{current_user.id}"
+  redirect "/surveys"
 end
