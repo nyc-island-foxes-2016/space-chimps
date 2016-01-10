@@ -1,20 +1,12 @@
 get '/surveys' do
-  # Next step: add method to survey model which sorts
-  # surveys already taken from surveys not yet taken
-  @surveys = Survey.all
-  @user_surveys = []
-  @other_surveys = []
-  @surveys.each do |survey|
-      if survey.user == current_user
-        @user_surveys << survey
-      else
-        @other_surveys << survey
-      end
-    end
+  user_and_other_surveys = Survey.created_and_not_created_by(current_user,Survey.all)
 
-  sorted_surveys = Survey.taken_and_not_taken(@other_surveys, current_user)
-  @surveys_taken = sorted_surveys[0]
-  @surveys_not_taken = sorted_surveys[1]
+  @user_surveys = user_and_other_surveys[0]
+  other_surveys = user_and_other_surveys[1]
+
+  taken_and_not_taken_surveys = Survey.taken_and_not_taken_by(current_user, other_surveys)
+  @surveys_taken = taken_and_not_taken_surveys[0]
+  @surveys_not_taken = taken_and_not_taken_surveys[1]
 
   erb :'/surveys/index'
 end

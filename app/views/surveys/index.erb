@@ -2,7 +2,7 @@
 
 <h3>Surveys you can take</h3>
 <ul>
-  <% @surveys_taken.each do |survey| %>
+  <% @surveys_not_taken.each do |survey| %>
     <li>
       <p>
         <form method="POST" action="/surveys_users">
@@ -20,7 +20,7 @@
 
 <h3>Surveys you've already taken</h3>
 <ul>
-  <% @surveys_not_taken.each do |survey| %>
+  <% @surveys_taken.each do |survey| %>
     <li>
       <p>
         <form method="GET" action="/surveys/<%= "#{survey.id}" %>/results">
