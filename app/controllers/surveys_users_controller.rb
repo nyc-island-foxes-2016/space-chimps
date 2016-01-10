@@ -8,7 +8,7 @@ end
 
 post "/surveys_users" do
   # binding.pry
-  surveys_user = SurveysUser.create(user_id: current_user.id, survey_id: params[:survey_id])
-  redirect "/surveys_users/#{surveys_user.id}"
+  @surveys_user = SurveysUser.create(user_id: current_user.id, survey_id: params[:survey_id])
+  redirect "/surveys_users/#{@surveys_user.id}"
 end
 

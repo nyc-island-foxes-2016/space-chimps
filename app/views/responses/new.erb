@@ -9,6 +9,9 @@
   <%end%>
 </ul>
 
+<!-- This form is not recieving an @question object -->
+<% binding.pry %>
+
 <h3>Question: <%= @question.content %></h3>
 
 <ul>
@@ -20,7 +23,7 @@
       </li>
     <%end%>
 
-    <input type="hidden" name="surveys_user" value="<%= @surveys_user.id %>">
+    <input type="hidden" name="surveys_user_id" value="<%= @surveys_user.id %>">
     <input type="hidden" name="question_id" value="<%= @question.id %>">
     <input type="hidden" name="survey_id" value="<%= @survey.id %>">
 
