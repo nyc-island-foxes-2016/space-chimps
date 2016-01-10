@@ -36,20 +36,15 @@ post '/questions' do
       }.to_json
 
       # erb :"/questions/_show?survey_id=#{@question.survey_id}"
-    # else
-    #   redirect "/questions/new?survey_id=#{@question.survey_id}"
+    else
+      redirect "/questions/new?survey_id=#{@question.survey_id}"
     end
 
-  # else
-  #   redirect "/questions/new?survey_id=#{@survey.id}?error=Question did not save."
+  else
+    redirect "/questions/new?survey_id=#{@survey.id}?error=Question did not save."
   end
 
 end
-
-
-# get '/questions/:id' do
-#   erb :"/questions/show"
-# end
 
 
 delete '/questions/:id' do
