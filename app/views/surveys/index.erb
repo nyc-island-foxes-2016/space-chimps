@@ -1,14 +1,14 @@
-<h2>Surveys You Can Take</h2>
+<h2>Surveys</h2>
 
+<h3>Surveys you can take</h3>
 <ul>
-  <% @other_surveys.each do |survey| %>
+  <% @surveys_taken.each do |survey| %>
     <li>
       <p>
-          <form method="POST" action="/surveys_users">
-           <input type="hidden" name="survey_id" value="<%=survey.id%>">
-           <input type="submit" value="<%= survey.name %>">
-          </form>
-        </p>
+        <form method="POST" action="/surveys_users">
+         <input type="hidden" name="survey_id" value="<%= survey.id %>">
+         <input type="submit" value="<%= survey.name %>">
+        </form>
       </p>
       <p class="attribution">
         Created by <a href="/users/<%= "#{survey.user.id}" %>"><%= survey.user.username %></a> on <%= long_form_date(survey.created_at) %>
@@ -17,9 +17,26 @@
   <% end %>
 </ul>
 
-<% if logged_in? %>
-  <h2>Surveys You Created</h2>
 
+<h3>Surveys you've already taken</h3>
+<ul>
+  <% @surveys_not_taken.each do |survey| %>
+    <li>
+      <p>
+        <form method="GET" action="/surveys/<%= "#{survey.id}" %>/results">
+          <input type="submit" value="<%= survey.name %>">
+        </form>
+      </p>
+      <p class="attribution">
+        Created by <a href="/users/<%= "#{survey.user.id}" %>"><%= survey.user.username %></a> on <%= long_form_date(survey.created_at) %>
+      </p>
+    </li>
+  <% end %>
+</ul>
+
+
+<% if logged_in? %>
+  <h3>Surveys you created</h3>
   <ul>
     <% @user_surveys.each do |survey| %>
       <li>

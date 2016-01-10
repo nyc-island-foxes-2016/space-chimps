@@ -29,7 +29,6 @@ class Survey < ActiveRecord::Base
     surveys_taken = []
     surveys_not_taken = []
 
-    binding.pry
     surveys_array.each do |survey|
       if survey.has_been_taken_by? user
         surveys_taken << survey
@@ -37,6 +36,7 @@ class Survey < ActiveRecord::Base
         surveys_not_taken << survey
       end
     end
+
     return [surveys_taken, surveys_not_taken]
   end
 

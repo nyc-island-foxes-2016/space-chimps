@@ -16,8 +16,6 @@ get '/surveys' do
   @surveys_taken = sorted_surveys[0]
   @surveys_not_taken = sorted_surveys[1]
 
-  binding.pry
-
   erb :'/surveys/index'
 end
 
