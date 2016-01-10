@@ -1,7 +1,7 @@
 get '/responses/new' do
   @surveys_user = SurveysUser.find_by(id: params[:surveys_user_id])
   @survey = Survey.find_by(id: @surveys_user.survey_id)
-
+binding.pry
   @question = @surveys_user.next_question
   erb :'responses/new'
 end

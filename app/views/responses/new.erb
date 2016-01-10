@@ -12,6 +12,7 @@
 <!-- This form is not recieving an @question object -->
 <% binding.pry %>
 
+<% if @question %>
 <h3>Question: <%= @question.content %></h3>
 
 <ul>
@@ -30,3 +31,7 @@
     <input type="submit" value="Submit answer">
   </form>
 </ul>
+
+<% else %>
+  <p>Survey complete.</p>
+<% end %>
