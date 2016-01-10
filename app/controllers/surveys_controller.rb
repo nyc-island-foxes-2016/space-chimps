@@ -11,6 +11,13 @@ get '/surveys' do
         @other_surveys << survey
       end
     end
+
+  sorted_surveys = Survey.taken_and_not_taken(@other_surveys, current_user)
+  @surveys_taken = sorted_surveys[0]
+  @surveys_not_taken = sorted_surveys[1]
+
+  binding.pry
+
   erb :'/surveys/index'
 end
 

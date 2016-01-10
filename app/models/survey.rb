@@ -21,4 +21,23 @@ class Survey < ActiveRecord::Base
 
   validates   :user_id, presence: true
 
+  def has_been_taken_by?(user)
+    !!SurveysUser.find_by(user: user, survey: self)
+  end
+
+  def self.taken_and_not_taken(surveys_array,user)
+    surveys_taken = []
+    surveys_not_taken = []
+
+    binding.pry
+    surveys_array.each do |survey|
+      if survey.has_been_taken_by? user
+        surveys_taken << survey
+      else
+        surveys_not_taken << survey
+      end
+    end
+    return [surveys_taken, surveys_not_taken]
+  end
+
 end
