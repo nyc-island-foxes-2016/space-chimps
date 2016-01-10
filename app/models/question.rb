@@ -16,9 +16,15 @@ class Question < ActiveRecord::Base
     question_results = {}
 
     question_results["content"] = self.content
+    question_results["responses_count"] = self.responses.count
+
+    question_options = []
+
     self.options.each do |option|
-      single_question_results[option.content] = Response.where(option_id: option.id).count
+      key = option.content.to_sym
+      question_options << ({key => Response.where(option_id: option.id).count})
     end
+    question_results["options"] = question_options
 
     question_results
   end

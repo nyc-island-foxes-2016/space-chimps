@@ -46,7 +46,7 @@ get '/surveys/:id/results' do
     @questions_results << question.compiled_results
   end
 
-  "Show results for #{@survey.name}. #{@question_results}"
+  erb :"/surveys/results"
 end
 
 put '/surveys/:id' do
