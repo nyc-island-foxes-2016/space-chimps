@@ -84,15 +84,15 @@ survey3 = Survey.create( name: "Favorite murder options",
                                  )
 
         option8 = Option.create( content: "Library",
-                                question: question4
+                                question: question5
                                 )
 
         option9 = Option.create( content: "Conservatory",
-                                question: question4
+                                question: question5
                                 )
 
         option9 = Option.create( content: "Billiards Room",
-                                question: question4
+                                question: question5
                                 )
 
 
