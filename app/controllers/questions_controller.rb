@@ -5,6 +5,7 @@ get '/questions/new' do
   erb :"/questions/new"
 end
 
+
 post '/questions' do
   @question = Question.new(params[:question])
 
@@ -18,22 +19,37 @@ post '/questions' do
       @options << Option.create(content: option_content, question: @question)
     end
 
-    redirect "/questions/new?survey_id=#{@question.survey_id}"
-  else
-    redirect "/questions/new?survey_id=#{@survey.id}?error=Question did not save."
+    options_content = []
+
+    @options.each do |option|
+      options_content << option.content
+    end
+
+    options_content.join('\n')
+
+    if request.xhr?
+
+      return {
+        id: @question.id,
+        content: @question.content,
+        options: options_content
+      }.to_json
+
+      # erb :"/questions/_show?survey_id=#{@question.survey_id}"
+    # else
+    #   redirect "/questions/new?survey_id=#{@question.survey_id}"
+    end
+
+  # else
+  #   redirect "/questions/new?survey_id=#{@survey.id}?error=Question did not save."
   end
 
 end
 
 
-get '/questions/:id' do
-  # @survey = Survey.find_by(id: params[:survey_id])
-  # @surveys_user = SurveysUser.find_or_create_by(user_id: session[:user_id], survey_id: params[:survey_id])
-  # binding.pry
-  # next_question_id = @survey.next_question_id
-  # @question = Question.find_by(id: next_question_id)
-  erb :"/questions/show"
-end
+# get '/questions/:id' do
+#   erb :"/questions/show"
+# end
 
 
 delete '/questions/:id' do

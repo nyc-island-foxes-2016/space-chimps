@@ -3,9 +3,8 @@ class Option < ActiveRecord::Base
   has_many :responses
 
   validates   :content,  presence: true,
-                      uniqueness: true,
                       length: {
-                        in: 4..64,
+                        in: 1..64,
                         too_short: "must be at least %{count} characters long.",
                         too_long: "is limited to %{count} characters."
                       }
