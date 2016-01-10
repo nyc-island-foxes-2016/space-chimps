@@ -9,9 +9,6 @@
   <%end%>
 </ul>
 
-<!-- This form is not recieving an @question object -->
-<% binding.pry %>
-
 <% if @question %>
 <h3>Question: <%= @question.content %></h3>
 
@@ -33,5 +30,11 @@
 </ul>
 
 <% else %>
-  <p>Survey complete.</p>
+  <p>Thanks for completing the survey, "<%= @survey.name %>.</p>
+  <p>
+    See <a href="#">Survey Results</a>
+  </p>
+  <p>
+    Return to <a href="#">Survey Index</a>
+  </p>
 <% end %>
