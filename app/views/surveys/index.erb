@@ -6,7 +6,6 @@
       <p>
           <form method="POST" action="/surveys_users">
            <input type="hidden" name="survey_id" value="<%=survey.id%>">
-           <input type="hidden" name="user_id" value="<%=current_user.id%>">
            <input type="submit" value="<%= survey.name %>">
           </form>
         </p>

@@ -2,16 +2,10 @@
 
 <p><%= @survey.description %>.</p>
 
-<p>This survey was created by <%= @survey.user.username %></p>
+<p>This survey was created by <%= @survey.user.username %>.</p>
 
+<form method="get" action="/responses/new">
 
-<ul>
-  <form method="get" action="/responses/new">
-
-    <input type="hidden" name="surveys_user" value="<%= @surveys_user.id %>">
-
-    <input type="hidden" name="survey_id" value="<%= @survey.id %>">
-
-    <input type="submit" value="Start Survey">
-  </form>
-</ul>
+  <input type="hidden" name="surveys_user_id" value="<%= @surveys_user.id %>">
+  <input type="submit" value="Start Survey">
+</form>
