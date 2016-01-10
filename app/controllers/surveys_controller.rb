@@ -39,10 +39,10 @@ end
 
 get '/surveys/:id/results' do
   @survey = Survey.find_by(id: params[:id])
-  @questions = @survey.questions
+  questions = @survey.questions
   @questions_results = []
 
-  @questions.each do |question|
+  questions.each do |question|
     @questions_results << question.compiled_results
   end
 
