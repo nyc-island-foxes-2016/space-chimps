@@ -39,7 +39,14 @@ end
 
 get '/surveys/:id/results' do
   @survey = Survey.find_by(id: params[:id])
-  "Show results for #{@survey.name}"
+  @questions = @survey.questions
+  @questions_results = []
+
+  @questions.each do |question|
+    @questions_results << question.compiled_results
+  end
+
+  "Show results for #{@survey.name}. #{@question_results}"
 end
 
 put '/surveys/:id' do

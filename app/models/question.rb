@@ -11,4 +11,16 @@ class Question < ActiveRecord::Base
                         }
 
   validates   :survey_id, presence: true
+
+  def compiled_results
+    question_results = {}
+
+    question_results["content"] = self.content
+    self.options.each do |option|
+      single_question_results[option.content] = Response.where(option_id: option.id).count
+    end
+
+    question_results
+  end
+
 end
