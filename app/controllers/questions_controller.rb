@@ -19,23 +19,8 @@ post '/questions' do
       @options << Option.create(content: option_content, question: @question)
     end
 
-    options_content = []
-
-    @options.each do |option|
-      options_content << option.content
-    end
-
-    options_content.join('\n')
-
     if request.xhr?
-
-      return {
-        id: @question.id,
-        content: @question.content,
-        options: options_content
-      }.to_json
-
-      # erb :"/questions/_show?survey_id=#{@question.survey_id}"
+      erb :"/questions/_show", locals: {question: @question}, layout: false
     else
       redirect "/questions/new?survey_id=#{@question.survey_id}"
     end
