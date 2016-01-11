@@ -1,5 +1,9 @@
 <h2><%= @survey.name %></h2>
 
+<p>
+  <a href="/surveys/<%= @survey.id %>/results">View Survey Results</a>
+</p>
+
 <p><%= @survey.description %>.</p>
 <p>This survey was created by <%= @user.username %></p>
 
