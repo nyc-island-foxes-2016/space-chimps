@@ -179,7 +179,7 @@ main input[type="text"] {
 }
 
 main input[type="submit"] {
-  width: 10rem;
+  width: 20rem;
 }
 
 main textarea {
