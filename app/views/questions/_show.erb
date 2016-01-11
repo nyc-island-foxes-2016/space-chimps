@@ -1,4 +1,4 @@
-<li><%= question.content %>
+<li id="listed_question_id_<%= question.id %>"><%= question.content %>
   <ul>
     <% question.options.each do |option| %>
       <li><%= option.content %></li>
@@ -7,7 +7,7 @@
 </li>
 
 
-<form method="POST" action="/questions/<%= question.id %>">
+<form class="delete-question" method="POST" action="/questions/<%= question.id %>">
   <input type=hidden name="_method" value="DELETE">
   <input type="submit" value="Delete Question">
 </form>

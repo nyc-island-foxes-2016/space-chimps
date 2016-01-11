@@ -12,4 +12,28 @@ $(document).ready(function() {
     });
   });
 
+  $("#questions-section").on("submit", ".delete-question", function(event) {
+    event.preventDefault();
+    var question_id = getIdFromUrl(this.action)
+    debugger
+    $.ajax({
+      type: "DELETE",
+      url: "/questions/" + question_id,
+      data: $(this).serialize()
+    }).done(function(response) {
+      console.log(response)
+      debugger
+      $('#questions-section').load(response);
+    });
+  });
+
+
 });
+
+
+function getIdFromUrl(urlString) {
+  var idArray = urlString.slice(-4).split("");
+  var sliceIndex = idArray.findIndex(function(el) {if (el == "/") {return true}; });
+  var id = idArray.slice(sliceIndex +1).join("");
+  return id;
+}

@@ -36,5 +36,10 @@ delete '/questions/:id' do
   question = Question.find(params[:id])
   survey = Survey.find(question.survey_id)
   question.destroy
-  redirect "/questions/new?survey_id=#{survey.id}"
+  if request.xhr?
+    "Question deleted"
+    erb :"/"
+  else
+    redirect "/questions/new?survey_id=#{survey.id}"
+  end
 end
