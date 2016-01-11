@@ -8,9 +8,7 @@
 
 <ol id="questions-section">
   <% @survey.questions.each do |question| %>
-    <li id="questions-list">
-      <%= erb :"/questions/_show", locals: {question: question} %>
-    </li>
+    <%= erb :"/questions/_show", locals: {question: question} %>
   <% end %>
 </ol>
 
